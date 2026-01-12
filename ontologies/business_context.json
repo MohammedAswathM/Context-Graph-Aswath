@@ -1,0 +1,299 @@
+{
+  "metadata": {
+    "ontology_id": "business",
+    "version": "1.0.0",
+    "description": "Business context ontology for organizations, people, products, and transactions",
+    "created": "2026-01-10"
+  },
+  "classes": {
+    "Organization": {
+      "uri": "business:Organization",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Organization", "@language": "en"}],
+      "rdfs:comment": "A company, business, or institution"
+    },
+    "Person": {
+      "uri": "business:Person",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Person", "@language": "en"}],
+      "rdfs:comment": "An individual person"
+    },
+    "Product": {
+      "uri": "business:Product",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Product", "@language": "en"}],
+      "rdfs:comment": "A product or service offered by an organization"
+    },
+    "Project": {
+      "uri": "business:Project",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Project", "@language": "en"}],
+      "rdfs:comment": "A project or initiative"
+    },
+    "Location": {
+      "uri": "business:Location",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Location", "@language": "en"}],
+      "rdfs:comment": "A physical or geographic location"
+    },
+    "Department": {
+      "uri": "business:Department",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Department", "@language": "en"}],
+      "rdfs:comment": "A department within an organization",
+      "rdfs:subClassOf": "Organization"
+    },
+    "Position": {
+      "uri": "business:Position",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Position", "@language": "en"}],
+      "rdfs:comment": "A job position or role"
+    },
+    "Transaction": {
+      "uri": "business:Transaction",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Transaction", "@language": "en"}],
+      "rdfs:comment": "A business transaction or deal"
+    },
+    "Contract": {
+      "uri": "business:Contract",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Contract", "@language": "en"}],
+      "rdfs:comment": "A legal contract or agreement"
+    },
+    "Document": {
+      "uri": "business:Document",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Document", "@language": "en"}],
+      "rdfs:comment": "A document, report, or file"
+    }
+  },
+  "object_properties": {
+    "employs": {
+      "uri": "business:employs",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "employs", "@language": "en"}],
+      "rdfs:domain": "Organization",
+      "rdfs:range": "Person",
+      "rdfs:comment": "Organization employs a person"
+    },
+    "worksFor": {
+      "uri": "business:worksFor",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "works for", "@language": "en"}],
+      "rdfs:domain": "Person",
+      "rdfs:range": "Organization",
+      "rdfs:comment": "Person works for an organization"
+    },
+    "manages": {
+      "uri": "business:manages",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "manages", "@language": "en"}],
+      "rdfs:domain": "Person",
+      "rdfs:range": "Person",
+      "rdfs:comment": "Person manages another person"
+    },
+    "leadsProject": {
+      "uri": "business:leadsProject",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "leads project", "@language": "en"}],
+      "rdfs:domain": "Person",
+      "rdfs:range": "Project",
+      "rdfs:comment": "Person leads a project"
+    },
+    "involvedIn": {
+      "uri": "business:involvedIn",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "involved in", "@language": "en"}],
+      "rdfs:domain": "Person",
+      "rdfs:range": "Project",
+      "rdfs:comment": "Person is involved in a project"
+    },
+    "produces": {
+      "uri": "business:produces",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "produces", "@language": "en"}],
+      "rdfs:domain": "Organization",
+      "rdfs:range": "Product",
+      "rdfs:comment": "Organization produces a product"
+    },
+    "sells": {
+      "uri": "business:sells",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "sells", "@language": "en"}],
+      "rdfs:domain": "Organization",
+      "rdfs:range": "Product",
+      "rdfs:comment": "Organization sells a product"
+    },
+    "locatedIn": {
+      "uri": "business:locatedIn",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "located in", "@language": "en"}],
+      "rdfs:domain": "Organization",
+      "rdfs:range": "Location",
+      "rdfs:comment": "Organization is located in a place"
+    },
+    "partOf": {
+      "uri": "business:partOf",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "part of", "@language": "en"}],
+      "rdfs:domain": "Department",
+      "rdfs:range": "Organization",
+      "rdfs:comment": "Department is part of an organization"
+    },
+    "holdsPosition": {
+      "uri": "business:holdsPosition",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "holds position", "@language": "en"}],
+      "rdfs:domain": "Person",
+      "rdfs:range": "Position",
+      "rdfs:comment": "Person holds a position"
+    },
+    "relatedTo": {
+      "uri": "business:relatedTo",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "related to", "@language": "en"}],
+      "rdfs:comment": "Generic relationship between entities"
+    },
+    "collaboratesWith": {
+      "uri": "business:collaboratesWith",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "collaborates with", "@language": "en"}],
+      "rdfs:domain": "Organization",
+      "rdfs:range": "Organization",
+      "rdfs:comment": "Organizations collaborate together"
+    },
+    "hasClient": {
+      "uri": "business:hasClient",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "has client", "@language": "en"}],
+      "rdfs:domain": "Organization",
+      "rdfs:range": "Organization",
+      "rdfs:comment": "Organization has a client organization"
+    },
+    "participatesIn": {
+      "uri": "business:participatesIn",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "participates in", "@language": "en"}],
+      "rdfs:domain": "Organization",
+      "rdfs:range": "Transaction",
+      "rdfs:comment": "Organization participates in a transaction"
+    },
+    "authorOf": {
+      "uri": "business:authorOf",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "author of", "@language": "en"}],
+      "rdfs:domain": "Person",
+      "rdfs:range": "Document",
+      "rdfs:comment": "Person is author of a document"
+    }
+  },
+  "datatype_properties": {
+    "name": {
+      "uri": "business:name",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "name", "@language": "en"}],
+      "rdfs:range": "xsd:string",
+      "rdfs:comment": "Name of an entity"
+    },
+    "email": {
+      "uri": "business:email",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "email", "@language": "en"}],
+      "rdfs:domain": "Person",
+      "rdfs:range": "xsd:string",
+      "rdfs:comment": "Email address"
+    },
+    "phone": {
+      "uri": "business:phone",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "phone", "@language": "en"}],
+      "rdfs:range": "xsd:string",
+      "rdfs:comment": "Phone number"
+    },
+    "address": {
+      "uri": "business:address",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "address", "@language": "en"}],
+      "rdfs:range": "xsd:string",
+      "rdfs:comment": "Physical address"
+    },
+    "foundedDate": {
+      "uri": "business:foundedDate",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "founded date", "@language": "en"}],
+      "rdfs:domain": "Organization",
+      "rdfs:range": "xsd:date",
+      "rdfs:comment": "Date organization was founded"
+    },
+    "revenue": {
+      "uri": "business:revenue",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "revenue", "@language": "en"}],
+      "rdfs:domain": "Organization",
+      "rdfs:range": "xsd:decimal",
+      "rdfs:comment": "Annual revenue"
+    },
+    "employeeCount": {
+      "uri": "business:employeeCount",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "employee count", "@language": "en"}],
+      "rdfs:domain": "Organization",
+      "rdfs:range": "xsd:integer",
+      "rdfs:comment": "Number of employees"
+    },
+    "price": {
+      "uri": "business:price",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "price", "@language": "en"}],
+      "rdfs:domain": "Product",
+      "rdfs:range": "xsd:decimal",
+      "rdfs:comment": "Product price"
+    },
+    "description": {
+      "uri": "business:description",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "description", "@language": "en"}],
+      "rdfs:range": "xsd:string",
+      "rdfs:comment": "Description of an entity"
+    },
+    "startDate": {
+      "uri": "business:startDate",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "start date", "@language": "en"}],
+      "rdfs:domain": "Project",
+      "rdfs:range": "xsd:date",
+      "rdfs:comment": "Project start date"
+    },
+    "endDate": {
+      "uri": "business:endDate",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "end date", "@language": "en"}],
+      "rdfs:domain": "Project",
+      "rdfs:range": "xsd:date",
+      "rdfs:comment": "Project end date"
+    },
+    "status": {
+      "uri": "business:status",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "status", "@language": "en"}],
+      "rdfs:range": "xsd:string",
+      "rdfs:comment": "Status of an entity"
+    },
+    "website": {
+      "uri": "business:website",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "website", "@language": "en"}],
+      "rdfs:domain": "Organization",
+      "rdfs:range": "xsd:string",
+      "rdfs:comment": "Organization website URL"
+    },
+    "title": {
+      "uri": "business:title",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "title", "@language": "en"}],
+      "rdfs:range": "xsd:string",
+      "rdfs:comment": "Title or heading"
+    }
+  }
+}
