@@ -1,0 +1,435 @@
+{
+  "metadata": {
+    "ontology_id": "universal",
+    "version": "1.0.0",
+    "title": "Universal Knowledge Graph Ontology",
+    "description": "Industry-agnostic ontology supporting any domain: business, science, healthcare, education, government, etc. Based on schema.org, FOAF, Dublin Core, and W3C standards.",
+    "namespace": "kg",
+    "created": "2026-01-14"
+  },
+  "classes": {
+    "Entity": {
+      "uri": "kg:Entity",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Entity", "@language": "en"}],
+      "rdfs:comment": "Top-level class for any identifiable thing, concept, or abstraction"
+    },
+    "Agent": {
+      "uri": "kg:Agent",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Agent", "@language": "en"}],
+      "rdfs:comment": "Any entity capable of action: Person, Organization, AI System, Software",
+      "rdfs:subClassOf": "Entity"
+    },
+    "Person": {
+      "uri": "kg:Person",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Person", "@language": "en"}],
+      "rdfs:comment": "An individual human being",
+      "rdfs:subClassOf": "Agent"
+    },
+    "Organization": {
+      "uri": "kg:Organization",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Organization", "@language": "en"}],
+      "rdfs:comment": "Any organized group: Company, Government, Non-profit, Institution",
+      "rdfs:subClassOf": "Agent"
+    },
+    "Place": {
+      "uri": "kg:Place",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Place", "@language": "en"}],
+      "rdfs:comment": "Physical or virtual location: Address, City, Country, Building, Website",
+      "rdfs:subClassOf": "Entity"
+    },
+    "Event": {
+      "uri": "kg:Event",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Event", "@language": "en"}],
+      "rdfs:comment": "Something that happens: Meeting, Transaction, Milestone, Incident",
+      "rdfs:subClassOf": "Entity"
+    },
+    "Concept": {
+      "uri": "kg:Concept",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Concept", "@language": "en"}],
+      "rdfs:comment": "Abstract idea or category: Topic, Domain, Field of Study, Classification",
+      "rdfs:subClassOf": "Entity"
+    },
+    "CreativeWork": {
+      "uri": "kg:CreativeWork",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Creative Work", "@language": "en"}],
+      "rdfs:comment": "Content creation: Document, Article, Report, Code, Media, Dataset",
+      "rdfs:subClassOf": "Entity"
+    },
+    "Product": {
+      "uri": "kg:Product",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Product", "@language": "en"}],
+      "rdfs:comment": "Tangible or intangible offering: Physical good, Service, Software, Tool",
+      "rdfs:subClassOf": "Entity"
+    },
+    "Process": {
+      "uri": "kg:Process",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Process", "@language": "en"}],
+      "rdfs:comment": "Sequence of activities: Workflow, Procedure, Method, Protocol",
+      "rdfs:subClassOf": "Entity"
+    },
+    "Resource": {
+      "uri": "kg:Resource",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Resource", "@language": "en"}],
+      "rdfs:comment": "Available asset: Data, Equipment, Funding, Material, Infrastructure",
+      "rdfs:subClassOf": "Entity"
+    },
+    "Temporal": {
+      "uri": "kg:Temporal",
+      "type": "owl:Class",
+      "rdfs:label": [{"@value": "Temporal", "@language": "en"}],
+      "rdfs:comment": "Time-related entity: Date, Duration, Period, Schedule",
+      "rdfs:subClassOf": "Entity"
+    }
+  },
+  "object_properties": {
+    "relatedTo": {
+      "uri": "kg:relatedTo",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "related to", "@language": "en"}],
+      "rdfs:comment": "Generic relationship between any entities",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "Entity"
+    },
+    "partOf": {
+      "uri": "kg:partOf",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "part of", "@language": "en"}],
+      "rdfs:comment": "Membership or composition relationship",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "Entity"
+    },
+    "hasRole": {
+      "uri": "kg:hasRole",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "has role", "@language": "en"}],
+      "rdfs:comment": "Agent performs a function or holds a position",
+      "rdfs:domain": "Agent",
+      "rdfs:range": "Concept"
+    },
+    "interactsWith": {
+      "uri": "kg:interactsWith",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "interacts with", "@language": "en"}],
+      "rdfs:comment": "Agents engage or communicate",
+      "rdfs:domain": "Agent",
+      "rdfs:range": "Agent"
+    },
+    "employs": {
+      "uri": "kg:employs",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "employs", "@language": "en"}],
+      "rdfs:comment": "Organization employs person",
+      "rdfs:domain": "Organization",
+      "rdfs:range": "Person"
+    },
+    "manages": {
+      "uri": "kg:manages",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "manages", "@language": "en"}],
+      "rdfs:comment": "Agent oversees or controls entity",
+      "rdfs:domain": "Agent",
+      "rdfs:range": "Entity"
+    },
+    "locatedIn": {
+      "uri": "kg:locatedIn",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "located in", "@language": "en"}],
+      "rdfs:comment": "Entity exists at a place",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "Place"
+    },
+    "participatesIn": {
+      "uri": "kg:participatesIn",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "participates in", "@language": "en"}],
+      "rdfs:comment": "Agent engages in event or process",
+      "rdfs:domain": "Agent",
+      "rdfs:range": ["Event", "Process"]
+    },
+    "creates": {
+      "uri": "kg:creates",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "creates", "@language": "en"}],
+      "rdfs:comment": "Agent produces or authors entity",
+      "rdfs:domain": "Agent",
+      "rdfs:range": ["CreativeWork", "Product", "Resource"]
+    },
+    "owns": {
+      "uri": "kg:owns",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "owns", "@language": "en"}],
+      "rdfs:comment": "Agent has ownership of entity",
+      "rdfs:domain": "Agent",
+      "rdfs:range": "Entity"
+    },
+    "uses": {
+      "uri": "kg:uses",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "uses", "@language": "en"}],
+      "rdfs:comment": "Agent utilizes resource or tool",
+      "rdfs:domain": "Agent",
+      "rdfs:range": ["Resource", "Product", "Process"]
+    },
+    "influences": {
+      "uri": "kg:influences",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "influences", "@language": "en"}],
+      "rdfs:comment": "Entity affects or impacts another",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "Entity"
+    },
+    "dependsOn": {
+      "uri": "kg:dependsOn",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "depends on", "@language": "en"}],
+      "rdfs:comment": "Entity requires or relies on another",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "Entity"
+    },
+    "produces": {
+      "uri": "kg:produces",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "produces", "@language": "en"}],
+      "rdfs:comment": "Process or agent generates output",
+      "rdfs:domain": ["Agent", "Process"],
+      "rdfs:range": "Entity"
+    },
+    "consumes": {
+      "uri": "kg:consumes",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "consumes", "@language": "en"}],
+      "rdfs:comment": "Process or agent uses input",
+      "rdfs:domain": ["Agent", "Process"],
+      "rdfs:range": "Resource"
+    },
+    "precedes": {
+      "uri": "kg:precedes",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "precedes", "@language": "en"}],
+      "rdfs:comment": "Temporal ordering: entity comes before another",
+      "rdfs:domain": ["Event", "Process", "Temporal"],
+      "rdfs:range": ["Event", "Process", "Temporal"]
+    },
+    "collaboratesWith": {
+      "uri": "kg:collaboratesWith",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "collaborates with", "@language": "en"}],
+      "rdfs:comment": "Agents work together",
+      "rdfs:domain": "Agent",
+      "rdfs:range": "Agent"
+    },
+    "competesWith": {
+      "uri": "kg:competesWith",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "competes with", "@language": "en"}],
+      "rdfs:comment": "Agents are in competition",
+      "rdfs:domain": "Agent",
+      "rdfs:range": "Agent"
+    },
+    "implements": {
+      "uri": "kg:implements",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "implements", "@language": "en"}],
+      "rdfs:comment": "Entity realizes or executes concept/process",
+      "rdfs:domain": "Entity",
+      "rdfs:range": ["Concept", "Process"]
+    },
+    "specializes": {
+      "uri": "kg:specializes",
+      "type": "owl:ObjectProperty",
+      "rdfs:label": [{"@value": "specializes", "@language": "en"}],
+      "rdfs:comment": "Entity is a specific type of another",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "Entity"
+    }
+  },
+  "datatype_properties": {
+    "identifier": {
+      "uri": "kg:identifier",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "identifier", "@language": "en"}],
+      "rdfs:comment": "Unique ID: UUID, code, reference number",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "xsd:string"
+    },
+    "name": {
+      "uri": "kg:name",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "name", "@language": "en"}],
+      "rdfs:comment": "Primary name or title",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "xsd:string"
+    },
+    "alternateName": {
+      "uri": "kg:alternateName",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "alternate name", "@language": "en"}],
+      "rdfs:comment": "Alias, nickname, abbreviation",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "xsd:string"
+    },
+    "description": {
+      "uri": "kg:description",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "description", "@language": "en"}],
+      "rdfs:comment": "Textual explanation or summary",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "xsd:string"
+    },
+    "startDate": {
+      "uri": "kg:startDate",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "start date", "@language": "en"}],
+      "rdfs:comment": "When something begins",
+      "rdfs:domain": ["Event", "Process", "Temporal"],
+      "rdfs:range": "xsd:dateTime"
+    },
+    "endDate": {
+      "uri": "kg:endDate",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "end date", "@language": "en"}],
+      "rdfs:comment": "When something concludes",
+      "rdfs:domain": ["Event", "Process", "Temporal"],
+      "rdfs:range": "xsd:dateTime"
+    },
+    "creationDate": {
+      "uri": "kg:creationDate",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "creation date", "@language": "en"}],
+      "rdfs:comment": "When entity was created or established",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "xsd:dateTime"
+    },
+    "modificationDate": {
+      "uri": "kg:modificationDate",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "modification date", "@language": "en"}],
+      "rdfs:comment": "When entity was last changed",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "xsd:dateTime"
+    },
+    "email": {
+      "uri": "kg:email",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "email", "@language": "en"}],
+      "rdfs:comment": "Email address",
+      "rdfs:domain": "Agent",
+      "rdfs:range": "xsd:string"
+    },
+    "telephone": {
+      "uri": "kg:telephone",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "telephone", "@language": "en"}],
+      "rdfs:comment": "Phone number",
+      "rdfs:domain": "Agent",
+      "rdfs:range": "xsd:string"
+    },
+    "url": {
+      "uri": "kg:url",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "URL", "@language": "en"}],
+      "rdfs:comment": "Web address",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "xsd:anyURI"
+    },
+    "address": {
+      "uri": "kg:address",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "address", "@language": "en"}],
+      "rdfs:comment": "Physical or postal address",
+      "rdfs:domain": ["Agent", "Place"],
+      "rdfs:range": "xsd:string"
+    },
+    "value": {
+      "uri": "kg:value",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "value", "@language": "en"}],
+      "rdfs:comment": "Numeric or measured value",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "xsd:decimal"
+    },
+    "quantity": {
+      "uri": "kg:quantity",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "quantity", "@language": "en"}],
+      "rdfs:comment": "Amount or count",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "xsd:integer"
+    },
+    "price": {
+      "uri": "kg:price",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "price", "@language": "en"}],
+      "rdfs:comment": "Cost or monetary value",
+      "rdfs:domain": ["Product", "Resource"],
+      "rdfs:range": "xsd:decimal"
+    },
+    "currency": {
+      "uri": "kg:currency",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "currency", "@language": "en"}],
+      "rdfs:comment": "Currency code (USD, EUR, etc.)",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "xsd:string"
+    },
+    "status": {
+      "uri": "kg:status",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "status", "@language": "en"}],
+      "rdfs:comment": "Current state: active, pending, completed, cancelled",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "xsd:string"
+    },
+    "version": {
+      "uri": "kg:version",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "version", "@language": "en"}],
+      "rdfs:comment": "Version number or identifier",
+      "rdfs:domain": ["CreativeWork", "Product"],
+      "rdfs:range": "xsd:string"
+    },
+    "category": {
+      "uri": "kg:category",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "category", "@language": "en"}],
+      "rdfs:comment": "Classification or type",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "xsd:string"
+    },
+    "confidence": {
+      "uri": "kg:confidence",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "confidence", "@language": "en"}],
+      "rdfs:comment": "Extraction confidence score (0-1)",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "xsd:decimal"
+    },
+    "source": {
+      "uri": "kg:source",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "source", "@language": "en"}],
+      "rdfs:comment": "Origin of information: document, URL, database",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "xsd:string"
+    },
+    "context": {
+      "uri": "kg:context",
+      "type": "owl:DatatypeProperty",
+      "rdfs:label": [{"@value": "context", "@language": "en"}],
+      "rdfs:comment": "Surrounding text or circumstances",
+      "rdfs:domain": "Entity",
+      "rdfs:range": "xsd:string"
+    }
+  }
+}
